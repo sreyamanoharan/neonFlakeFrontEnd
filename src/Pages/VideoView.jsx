@@ -9,13 +9,13 @@ const VideoView = () => {
   useEffect(()=>{
     
     axios.get(`https://neonfakebackend.onrender.com/getVideo/${id}`).then((res)=>{
-console.log(res.data[0].video);
-setSelectedVideo(res.data[0].video)            
+console.log(res.data.data)
+setSelectedVideo(res.data.data)            
     },)
   },[])
   return (
     <div>
-      <video className="h-full w-full rounded-lg" controls>
+      <video className="h-full w-full rounded-lg" src={selectedVideo} autoPlay controls>
         <source
           src={selectedVideo}
           type="video/mp4"
