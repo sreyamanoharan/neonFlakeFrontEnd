@@ -11,7 +11,7 @@ function App() {
     <>
     <Router>
       <Routes>
-        <Route path='/' element={<UploadPage/>}/>
+        <Route path='/'  element={<UploadPage/>}/>
         <Route path='/view' element={<View/>}/>
         <Route path='/VideoView/:id' element={<VideoView/>}/>   
       </Routes>
