@@ -7,7 +7,8 @@ const UploadPage = () => {
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [video, setVideo] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleThumbnailUpload = async (e) => {
     if (e.target.files) {
@@ -42,10 +43,14 @@ const UploadPage = () => {
         formData.append("file", file);
         formData.append("uplode_preset", "stadGOimage");
         try {
+          setLoading(true);
           const result = await axios.post(
             "https://api.cloudinary.com/v1_1/ds0dvm4ol/video/upload?upload_preset=react-project",
             formData
           );
+          if (result.data.secure_url) {
+            setLoading(false);
+          }
           setVideo(result.data.secure_url);
           console.log(video);
         } catch (error) {
@@ -64,53 +69,59 @@ const UploadPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("https://neonfakebackend.onrender.com/inserting", { input }).then((res) => {
-      console.log(res,"result");
-      navigate("/view")
-    }).catch((err)=>{
-      console.log(err);
-    })
+    axios
+      .post("https://neonfakebackend.onrender.com/inserting", { input })
+      .then((res) => {
+        console.log(res, "result");
+        navigate("/view");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-    <div className="flex flex-col box-container bg-blue-100 rounded-lg p-6 gap-6">
-      <h1>Upload Page</h1>
+    <div className="flex flex-col box-container  bg-green-300 rounded-lg p-6 gap-6">
+      <h1 className="text-black font-extrabold">Upload Page</h1>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-3 items-center "
       >
-        <div className="flex justify-center items-center gap-2">
-          <label className="flex justify-center">Title:</label>
+        <div className="flex justify-between  w-full items-center gap-2 px-20">
+          <label className="flex justify-end">Title  :</label>
           <input
             type="text"
             value={title}
             maxLength="50"
+            className="h-8 rounded w-80"
             onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>
-        <div className="flex justify-center items-center gap-2">
-          <label className="flex justify-center">Description:</label>
+        <div className="flex justify-between  w-full items-center gap-2 px-20">
+          <label className="flex justify-end">Description:</label>
           <textarea
             value={description}
+            className="w-80"
             maxLength="200"
             onChange={(e) => setDescription(e.target.value)}
             required
           ></textarea>
         </div>
-        <div className="flex items-center     ">
-          <label className="flex justify-center w-[300px]">
+        <div className="flex justify-between  w-full items-center gap-2 px-20">
+          <label className="flex justify-start w-[300px]">
             Upload Thumbnail:
           </label>
           <input
             type="file"
+            className="w-80"
             accept="image/png, image/jpeg"
             required
             onChange={(e) => handleThumbnailUpload(e)}
           />
         </div>
-        <div className=" flex items-center    ">
-          <label className=" flex justify-center w-[300px]">
+        <div className=" flex justify-between  w-full items-center gap-2 px-20">
+          <label className=" flex justify-start w-[300px]">
             Upload Video:
           </label>
           <input
@@ -120,6 +131,7 @@ const UploadPage = () => {
             required
           />
         </div>
+        {loading && <p>video is uploding...</p>}
         <button
           className="flex  bg-neutral-900 p-2 rounded text-white"
           type="submit"
