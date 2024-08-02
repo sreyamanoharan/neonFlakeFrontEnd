@@ -59,12 +59,11 @@ const UploadPage = () => {
     thumbnail,
     video,
   };
-  console.log(input);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:4000/inserting", { input }).then((res) => {
-      console.log(res);
+    axios.post("http://localhost:5000/inserting", { input }).then((res) => {
+      console.log(res,"result");
     });
   };
 

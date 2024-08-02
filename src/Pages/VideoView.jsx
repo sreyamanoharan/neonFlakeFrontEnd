@@ -8,7 +8,7 @@ const VideoView = () => {
   console.log(id);
   useEffect(()=>{
     
-    axios.get(`http://localhost:4000/getVideo/${id}`).then((res)=>{
+    axios.get(`http://localhost:5000/getVideo/${id}`).then((res)=>{
 console.log(res.data[0].video);
 setSelectedVideo(res.data[0].video)            
     },)

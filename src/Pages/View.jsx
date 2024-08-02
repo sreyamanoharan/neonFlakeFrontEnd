@@ -8,7 +8,7 @@ const View = () => {
   const navigate = useNavigate()
   useEffect(() => {
     console.log("hiii");
-    axios.get("http://localhost:4000/gettingTumbnail").then((res) => {
+    axios.get("http://localhost:5000/gettingTumbnail").then((res) => {
       setTumbnail(res.data);
       console.log(res.d);
     });
