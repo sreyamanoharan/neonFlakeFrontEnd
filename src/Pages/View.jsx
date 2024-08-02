@@ -8,7 +8,7 @@ const View = () => {
   const navigate = useNavigate()
   useEffect(() => {
     console.log("hiii");
-    axios.get("http://neonfakebackend.onrender.com/gettingTumbnail").then((res) => {
+    axios.get("https://neonfakebackend.onrender.com/gettingTumbnail").then((res) => {
       setTumbnail(res.data);
       console.log(res.d);
     });

@@ -64,7 +64,9 @@ const UploadPage = () => {
     e.preventDefault();
     axios.post("https://neonfakebackend.onrender.com/inserting", { input }).then((res) => {
       console.log(res,"result");
-    });
+    }).catch((err)=>{
+      console.log(err);
+    })
   };
 
   return (
