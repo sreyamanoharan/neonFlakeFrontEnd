@@ -6,10 +6,9 @@ const View = () => {
   const [tumbnails, setTumbnail] = useState([]);
   const navigate = useNavigate()
   useEffect(() => {
-    console.log("hiii");
     axios.get("https://neonfakebackend.onrender.com/gettingTumbnail").then((res) => {
       setTumbnail(res.data);
-      console.log(res.d);
+      console.log(res.data);
     });
   }, []);
 
