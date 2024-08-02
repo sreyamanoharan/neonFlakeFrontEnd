@@ -17,9 +17,11 @@ const View = () => {
   };
   return (
     <>   
+    <div className="grid grid-cols-3 p-3">
+
       {tumbnails.map((res, index) => (
         <div key={index} className="relative p-4 flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
-          <div className="relative cursor-pointer h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40" onClick={()=>handleNavigate(res?.id)}>
+          <div className="relative cursor-pointer h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40" onClick={()=>handleNavigate(res?._id)}>
             <img className="cursor-pointer" src={res?.thumbnail} alt="card-image" />
           </div>
           <div className="p-6">
@@ -32,6 +34,7 @@ const View = () => {
           </div>
         </div>
       ))}
+      </div>
     </>
   );
 };
