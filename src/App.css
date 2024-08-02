@@ -1,0 +1,37 @@
+
+.container{
+ text-align: center;
+}
+.box-container{
+  box-sizing: border-box;
+  border: 3px solid black;
+  width: 50%;
+  margin: 0 auto;
+  height: 400px;
+  margin-top: 150px;
+  background-color:aqua;
+
+}
+h1{
+  color: rgb(70, 70, 240);
+  text-align: center;
+}
+/*.itemone{
+  margin-bottom: 10px;
+}*/
+.itemtwo{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+/*.itemthree{
+  margin-bottom: 10px;
+}
+.itemfour{
+  margin-bottom: 20px;
+}*/
+label{
+  width: 130px;
+  padding: 10px;
+  display: inline-block;
+}
