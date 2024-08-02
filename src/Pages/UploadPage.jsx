@@ -62,7 +62,7 @@ const UploadPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("https://neonfakebackend.onrender.com/inserting", { input }).then((res) => {
+    axios.post("http://neonfakebackend.onrender.com/inserting", { input }).then((res) => {
       console.log(res,"result");
     });
   };
