@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UploadPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [video, setVideo] = useState(null);
+  const navigate = useNavigate()
 
   const handleThumbnailUpload = async (e) => {
     if (e.target.files) {
@@ -64,6 +66,7 @@ const UploadPage = () => {
     e.preventDefault();
     axios.post("https://neonfakebackend.onrender.com/inserting", { input }).then((res) => {
       console.log(res,"result");
+      navigate("/view")
     }).catch((err)=>{
       console.log(err);
     })
